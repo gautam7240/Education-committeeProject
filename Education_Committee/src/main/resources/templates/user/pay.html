@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section class=" body">
+
+
+		<div class="container text-center">
+
+			<h1
+				style="font-size: 50px; text-shadow: 1px 1px 2px #ccc; color: #573b8a; font-weight: 900;">
+				Education Committee</h1>
+			<h2
+				style="font-size: 17px; text-shadow: 1px 1px 2px #ccc; color: #573b8a; font-weight: 900;"
+				class="text-uppercase mt-2">Anamat Charitable Trust Wardha</h2>
+
+			
+			<h4
+				style="background-color:white; text-shadow: 1px 1px 2px #ccc; color: #573b8a; font-weight: 900;">
+				Note: Pay your registration fees here , skip if you have already paid. Thanks!</h4>
+
+			<div class="row mb-4">
+				<div class="col-md-4 offset-md-4">
+					<div class="card" >
+						<div class="card-body" style="padding: 0px;padding-bottom: 10px">
+								
+								<h2>
+									Hello <span th:text="${name}"></span>
+								</h2>
+								
+
+								<img alt="Scanner Image if you are not able to see Scanner then you pay on UPI ID" 
+										th:src="@{/images/Scanner.jpg}" style="max-width: 250px"
+										>
+										<br>
+					
+											<a type="button" th:href=@{/}
+													class="btn btn-primary mt-4">Done
+											</a>
+											
+								
+									</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		
+<!--<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script type="text/javascript">
+		function Pay(){
+			
+			const swalWithBootstrapButtons = Swal.mixin({
+				  customClass: {
+					  
+				    confirmButton: "btn btn-success",
+				    cancelButton: "btn btn-danger"
+				  },
+				  buttonsStyling: false
+				});
+				swalWithBootstrapButtons.fire({	
+			      imageUrl: "/images/scanner.jpg",
+				  imageWidth: 250,
+				  imageHeight: 300,
+				  imageAlt: "Custom image",
+				  title: "Make a payment",
+				  text: "Your Payment Scanner",
+				  showCancelButton: true,
+				  confirmButtonText: "Paid",
+				  cancelButtonText: "No, cancel!",
+				  reverseButtons: true
+				}).then((result) => {
+				  if (result.isConfirmed) {
+					  window.location="/";
+				    swalWithBootstrapButtons.fire({
+				      title: "Paid!",
+				      text: "Your payment is done if you paid.",
+				      icon: "success"
+				    });
+				  } else if (
+				    /* Read more about handling dismissals below */
+				    result.dismiss === Swal.DismissReason.cancel
+				  ) {
+				    swalWithBootstrapButtons.fire({
+				      title: "Cancelled",
+				      text: "Your Payment is pending safe :)",
+				      icon: "error"
+				    });
+				  }
+				});
+		}
+	</script>-->
+
+	</section>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section class="body mt-5">
+
+		
+
+		<div class="container text-center">
+			<h1
+				style="font-size: 50px; text-shadow: 1px 1px 2px #ccc; color: #573b8a; font-weight: 900;">
+				Education Committee</h1>
+			<h2
+				style="font-size: 17px; text-shadow: 1px 1px 2px #ccc; color: #573b8a; font-weight: 900;"
+				class="text-uppercase mt-2">Anamat Charitable Trust Wardha</h2>
+				
+				
+			<div class="row">
+				<div class="col-md-4 offset-md-4">
+					<div class="card mt-3 mb-5">
+						<div class="card-body ">							<h2>Register</h2>
+							<form th:action="@{/getotp}" method="post" th:object="${user}" id="formss"
+							onsubmit="return RegistrationFormSubmit()">
+							
+							<p>*All fields are required</p>
+							
+							
+								<input type="text" id="username" class="form-control mt-3"
+										
+								        name="Username"	placeholder="Your name here"
+								        th:value="${user.Username}">
+								        
+								        
+								<span class="formerror text-danger"><p style="color: black;">*Name length should be of 3 characters or more</p></span>
+								        
+								
+								        
+								<input type="number" name="number"
+									id="number" class="form-control mt-3" placeholder="Mobile Number"
+									 th:value="${user.number}">
+									
+								<span class="formerror text-danger"></span>
+									
+								<input type="email" id="email" class="form-control mt-3" name="email"
+									placeholder="Email Address"  th:value="${user.email}">
+								<span class="formerror text-danger"></span>
+									<div class="text-danger" th:if="${error != null}" th:text="${error}">
+									<!-- This block will only be displayed if 'myVariable' is not null -->
+								</div>
+									
+								<input type="password" name="password" 
+									id="password" class="form-control mt-3" placeholder="Password"
+									th:value="${user.Password}">
+									
+								<span class="formerror text-danger"><p style="color: black;">*password length should be of 6 characters or more</p></span>
+								
+									
+
+									<br />
+										
+										
+										
+										
+										<div id="spn">
+											
+										</div>
+										
+										<div id="btn">
+											<button type="submit" 
+													class="btn btn-primary  ">Get OTP
+											</button>
+										</div>
+								
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<div class="blurdiv" id="myDIV"></div>
+
+ <script>
+        function handleButtonClick(returnval) {
+        	
+        	if(returnval){
+        		var element = document.getElementById("myDIV");
+            	element.classList.add("showblurdiv");
+        		window.location="/OTPsend";
+        		
+        	}
+        	
+            
+        }
+    </script>
+
+	</section>
+
+
+</body>
+</html>

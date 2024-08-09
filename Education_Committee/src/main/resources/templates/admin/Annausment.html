@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section class="announcement">
+
+
+		<div class="sidebar">
+		
+				<span class="closebtn" onclick="toggleSidebar()" style="color:white !important;">&times;</span>
+						<div class="info">
+							<label>Name :</label>
+							<p th:text="${info.name}"></p>
+						</div>
+						<div class="info">
+							<label>email :</label>
+							<p th:text="${info.email}"></p>
+						</div>
+						
+						
+						<div th:if="${info.paymentStatus=='NOT DONE'}"
+						 class="info" id="payment">
+							<label>Payment is not done</label>
+							<br>
+							<a th:href="@{'/admin/paymentStatus/'+${info.id}}"
+										class="btn btn-danger btn-sm">
+											Done
+										</a>
+										
+						</div>
+						
+						<div class="info">
+							<label>parent no :</label>
+							<p th:if="${info.parentNo!=''}"><span th:text="${info.parentNo}"></span></p><br>
+							<p th:if="${info.parentNo==''}">not provided</p>
+						</div>
+						<div class="info">
+							<label>Address :</label>
+							<p th:text="${info.Address}"></p>
+						</div>
+						<div class="info">
+							<label>Phone no :</label>
+							<p th:text="${info.Phoneno}"></p>
+						</div>
+						
+						<div class="info">
+							<label>Gender :</label>
+							<p th:text="${info.Gender}"></p>
+						</div>
+						<div class="info" id="aadharPhoto">
+						<br><br>
+					
+						
+							<label>School Id:</label>
+							<p></p>
+							<button id="idPhoto1" onclick="fetchAndDisplayImage(info.id)">view</button>
+							 <button>
+							 	<a th:href="@{'/admin/id/'+${info.id}}" download>download</a>
+							  </button>
+						</div>
+						<div class="info" id="marksheet">
+							<label>Qualification :</label>
+							<p th:text="${info.Qualification}"></p>
+							<button id="marksheet1" onclick="fetchAndDisplayImage(info.id)">view</button>
+							 <button>
+							 	<a th:href="@{'/admin/marksheet/'+${info.id}}" download>download</a>
+							  </button>
+						</div>
+						
+						<div class="info">
+							<a id="logout-link" th:href="@{/logout}" class="btn btn-danger item"><i class="fa-solid fa-right-from-bracket me-2"></i>logout</a>
+						</div>				
+				
+			<div class="devider"></div>
+
+		</div>
+
+					<div class="row content1 mt-3 ">
+						<div class="col-md-8 mb-3">
+							<div class="card maincontent">
+								<div class="card-body">
+								
+								<svg onclick="toggleSidebar()" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  									<path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+								</svg>
+									
+									
+									<h2 class="text-center">Announcement</h2>
+									
+										<p class="text-center mt-5">No Announcement yet! </p>	
+				
+								</div>
+							</div>
+						</div>
+						
+						
+						
+						<div class="col-md-4 sidebar2">
+							<h2>Links</h2>
+	 							<a th:href="@{https://schools.aglasem.com/maharashtra-board-sample-paper-class-8/}"> 8th class questions</a>
+								<a th:href="@{background-color: transparent;}">9th class questions</a>
+								<a th:href="@{https://byjus.com/cbse-study-material/cbse-previous-year-question-paper-class-10/}">10th class questions</a>
+		
+						</div>
+					</div>
+					
+						
+						<div id="myModal" class="modal">
+  							<span id="close" class="close">&times;</span>
+							  <img class="modal-content" id="img01">
+							  <div id="caption"> </div>
+							 
+						</div>
+						
+						
+						<div id="myModal1" class="modal">
+  							<span id="close1" class="close1">&times;</span>
+							  <img class="modal-content" id="img011">
+							  <div id="caption1"> Qualification : [[${info.Qualification}]]</div>
+						</div>
+						
+						<!--  <div style="display: none;">
+							<input id="aadhar" type="text"  th:value="${info.idPhoto}"/>
+							<input id="marksheetphoto" type="text"  th:value="${info.MarksheetPhoto}"/>
+						</div>-->
+						
+						<div style="display: none;">
+							<input id="schoolId" type="text"  th:value="@{'/admin/id/'+${info.id}}"/>
+							<input id="marksheetphoto" type="text"  th:value="@{'/admin/marksheet/'+${info.id}}"/>
+						</div>
+						
+						
+						
+			
+		
+	<script>
+		    
+		const toggleSidebar=()=>{		
+			if($(".sidebar").is(":visible")){
+				$(".sidebar").css("display","none");
+			}else{
+				$(".sidebar").css("display","flex");
+				$(".content").css("margin-left","20%");
+			}
+		};
+	
+		//School id photo
+	
+		var idPhoto = document.getElementById("idPhoto1");
+		var modal = document.getElementById("myModal");
+		var span = document.getElementsByClassName("close")[0];
+		idPhoto.onclick = function(){
+	
+			var modalImg = document.getElementById("img01");
+			var schoolId = document.getElementById("schoolId").value;
+		
+		
+	  		modal.style.display = "block";
+	  		modalImg.src =schoolId;
+		}
+
+		span.onclick = function() { 
+	  		modal.style.display = "none";
+		}
+	
+	
+		//marksheet photo
+	
+		var marksheet = document.getElementById("marksheet1");
+		var modal1 = document.getElementById("myModal1");
+		var span1 = document.getElementsByClassName("close1")[0];
+		marksheet.onclick = function(){
+	
+			var modalImg1 = document.getElementById("img011");
+			var marksheetphoto = document.getElementById("marksheetphoto").value;
+		
+	  		modal1.style.display = "block";
+	  		modalImg1.src =marksheetphoto;
+	 
+		}
+
+		span1.onclick = function() { 
+	  		modal1.style.display = "none";
+		}
+	</script>
+	</section>
+
+</body>
+</html>

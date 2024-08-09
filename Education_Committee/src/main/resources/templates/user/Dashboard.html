@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section class="details">
+
+
+
+
+		<div class="container text-center">
+			<h1
+				style="font-size: 40px; text-shadow: 1px 1px 2px #ccc; color: #573b8a">
+				Education Committee</h1>
+			<h2
+				style="font-size: 17px; text-shadow: 1px 1px 2px #ccc; color: #573b8a;"
+				class="text-uppercase mt-2">Anamat Charitable Trust Wardha</h2>
+
+
+			<div class="row">
+				<div class="col-md-5 m-auto">
+					<div class="card mt-3 mb-5" style="background-color: #e2e2e2">
+						<div class="card-body">
+
+
+							<div class="container">
+										
+										
+									<form class="form" th:action="@{/user/do_process}" 
+									onsubmit="return FormSubmit()" th:object="${info}"
+									 enctype="multipart/form-data"
+									method="post" id="formss">	
+										
+									<p>*All fields are required</p>
+										
+									<input class=" form-control mt-3" type="text" name="name" id="name"
+										placeholder="Name" th:value="${info.Username}"/> 
+										
+										<span class="formerror text-danger"><p style="color: black;"></p></span>
+										
+										<input readonly="readonly" class=" form-control mt-3" type="text" name="email" id="name"
+										placeholder="Name" th:value="${info.email}"/> 
+										
+										
+									<input class="  form-control mt-3" id="address" type="text" name="Address"
+										placeholder="Address" minlength="10" maxlength="50" th:value="${info.Address}" />
+										<span class="formerror text-danger"><p  style="color: black;">*The address length should be of 10 characters <br>Format for Address (eg. pune, Maharashtra)</p></span>
+										
+										
+									<input readonly="readonly"
+										class=" form-control mt-3" type="tel" name="Phoneno" id="phone"
+										placeholder="Phone NO." th:value="${info.number}" />
+										<span style="display: none;" class="formerror text-danger"></span>
+										
+										
+									<input class=" form-control mt-3" id="phone2" th:value="${info.parentNo}"
+										type="number" name="parentNo" placeholder="Parants Number(optional)" />
+										<span class="formerror text-danger"></span>
+										
+										
+									<input id="quali"
+										class=" form-control mt-3" type="text" name="Qualification"
+										th:value="${info.Qualification}"
+										 placeholder="Qualification" />
+										 <span class="formerror text-danger"><p  style="color: black;">*enter here your current class (eg. 7th)</p></span>
+										 
+										 <br>
+										 <label>Select your Gender</label><br>
+										 	<input checked="checked" name="Gender" type="radio" value="Male"> Male 
+											<input name="Gender" type="radio" value="Female"> Female
+											<input name="Gender" type="radio" value="Other"> Other
+									
+										<span class="formerror text-danger"></span>
+										
+										
+										<br><hr>
+										
+										<label
+										class="mt-0">Upload your School Id <br> (*file size should be 100kb or less)</label> 
+									<input
+										class="form-control" type="file" id="id_input"
+										name="school_idimg" 
+										/> 
+										<span class="formerror text-danger"><p class="mt-3 m-0"  style="color: black;"></p></span>
+										
+										<hr>
+										<label
+										class="mt-0">Upload here your previous class Marksheet <br> (*file size should be 100kb or less)</label> 
+									<input
+										class=" form-control" id="marksheet_input" type="file"
+										name="marksheetimg"
+										 />
+										<span class="formerror text-danger"><p class="mt-3 m-0"  style="color: black;"></p></span>
+										<p></p>
+										
+
+									<div id="spn">
+											
+										</div>
+										
+										<div id="btn">
+											<button type="submit"
+													class="btn btn-primary  ">Make Payment
+											</button>
+										</div>
+										
+								</form>
+
+
+							</div>
+
+
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			
+
+	</section>
+
+</body>
+</html>

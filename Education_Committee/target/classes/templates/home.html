@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymleaf.org" th:replace="base::layout(~{::section})">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	 <section id="hero">
+    <div class="hero-container" data-aos="fade-up" data-aos-delay="150">
+        <h1 style="font-size: 150%;">Welcome to <br /><span style="font-size: 200%">the Education Committee Portal</span></h1>
+        <h2>
+            <p class="text-center" style="font-size: 20px;">Organized by <br>
+                <span>ANAMAT CHARITABLE TRUST WARDHA MAHARASHTRA</span>
+            </p>
+        </h2>
+        <h3 style="color: white;">This committee is made for students welfare for their better future</h3>
+        <h3 style="color: white;">
+            <ul class="d-flex justify-content-center">
+                <li class="me-5">Class 8th </li>
+                <li class="me-5">Class 9th</li>
+                <li class="me-5">Class 10th</li>
+            </ul>
+        </h3>
+        <div class="d-flex mt-1 justify-content-center">
+            <a th:href="@{/login}" class="btn-get-started scrollto">Login</a>
+            <a th:href="@{/registration}" class="btn-get-started scrollto ms-2">New Registration</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

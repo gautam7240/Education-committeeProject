@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.thymleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+
+	<section class=" body">
+
+
+		<div class="container text-center">
+
+			<h1
+				style="font-size: 50px; text-shadow: 1px 1px 2px #ccc; color: #573b8a; font-weight: 900;">
+				Education Committee</h1>
+			<h2
+				style="font-size: 17px; text-shadow: 1px 1px 2px #ccc; color: #573b8a; font-weight: 900;"
+				class="text-uppercase mt-2">Anamat Charitable Trust Wardha</h2>
+
+
+
+			<div class="row">
+				<div class="col-md-4 offset-md-4">
+					<div class="card" >
+						<div class="card-body">
+							<form th:action="@{/do_register}" method="post" th:object="${user}"
+							onsubmit="otpFormSubmit()">
+								
+								<input name="Username" th:value="${user.Username}" type="hidden" />
+								<input name="number" th:value="${user.number}" type="hidden" />
+								<input name="email" th:value="${user.email}" type="hidden" />
+								<input name="Password" th:value="${user.Password}" type="hidden" />
+								
+								<h2>
+									Hello <span th:text="${' '+user.Username}"></span>
+								</h2>
+
+								<div class="alert border" role="alert">
+								<span th:text=${msg}></span>
+									 <br />
+									<span th:text="${user.email}"></span><br />Please enter OTP
+								</div>
+
+								<input type="number" id="username" class="form-control mt-3"
+									name="otp" placeholder="Enter OTP" required="required">
+									
+									
+									<div class="container mt-2">
+									
+										<div id="spn">
+											
+										</div>
+										
+										<div id="btn">
+											<button type="submit" 
+													class="btn btn-primary  ">Register
+											</button>
+										</div>
+										
+									</div>
+									
+									
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="blurdiv" id="myDIV"></div>
+	<br>
+	<br>
+
+
+	</section>
+
+
+</body>
+</html>
